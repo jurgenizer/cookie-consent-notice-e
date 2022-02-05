@@ -46,7 +46,8 @@ class CookieConsentNotice {
                                       class="cookieConsentNotice__banner cookieConsentNotice__banner__${this.config.bannerStyle} cookieConsentNotice__${this.config.border} cookieConsentNotice__${this.config.position}"
                                       style="background-color: ${this.banner.background};"
                                   >
-                                      <h3 style="color: ${this.banner.color};">${this.banner.heading}</h3>
+                                  <span class="close" id="acceptCookies">&times;</span>
+                                  <h3 style="color: ${this.banner.color};">${this.banner.heading}</h3>
                                       <p style="color: ${this.banner.color};">
                                           ${this.banner.description} 
                                           <a 
@@ -58,14 +59,6 @@ class CookieConsentNotice {
                                               ${this.banner.linkText}
                                           </a>
                                       </p>
-                                      <div class="btn__section">
-                                          <button type="button" id="acceptCookies" class="btn__accept accept__btn__styles" style="color: ${this.banner.acceptBtn.color}; background-color: ${this.banner.acceptBtn.background};">
-                                              ${this.banner.acceptBtn.text}
-                                          </button>
-                                          <button type="button" id="rejectCookies" class="btn__settings settings__btn__styles" style="color: ${this.banner.rejectBtn.color}; background-color: ${this.banner.rejectBtn.background};">
-                                              ${this.banner.rejectBtn.text}
-                                          </button>
-                                      </div>
                                   </div>
                               `;
     document.body.appendChild(this.Cookies);
@@ -75,7 +68,6 @@ class CookieConsentNotice {
     // SET EVENT LISTENERS
     document.getElementById('prebannerBtn').addEventListener('click', () => this.openSelector())
     document.getElementById('acceptCookies').addEventListener('click', () => this.acceptCookies())
-    document.getElementById('rejectCookies').addEventListener('click', () => this.rejectCookies())
   }
 
   checkStatus() {
@@ -110,11 +102,6 @@ class CookieConsentNotice {
     this.addCustomScript()
   }
 
-  rejectCookies() {
-    localStorage.setItem("CookieConsentNotice", "0");
-    this.openManageCookies();
-    this.disableTracking();
-  }
 
   activateTracking() {
     // Google Analytics Tracking
@@ -256,16 +243,6 @@ class CookieConsentNotice {
       background: obj.bannerBackground || '#fff',
       color: obj.bannerColor || '#4a4a4a',
       heading: obj.bannerHeading !== 'none' ? obj.bannerHeading || lang.bannerHeading : '',
-      acceptBtn: {
-        text: obj.acceptBtnText || lang.acceptBtnText,
-        background: obj.acceptBtnBackground || '#209cee',
-        color: obj.acceptBtnColor || '#fff'
-      },
-      rejectBtn: {
-        text: obj.rejectBtnText || lang.rejectBtnText,
-        background: obj.rejectBtnBackground || '#eeeeee',
-        color: obj.rejectBtnColor || '#4a4a4a'
-      },
       manageCookies: {
         color: obj.manageColor || '#4a4a4a',
         background: obj.manageBackground || '#fff',
@@ -285,8 +262,6 @@ class LanguagesGC {
     this.bannerHeading = lang['bannerHeading']
     this.bannerDescription = lang['bannerDescription']
     this.bannerLinkText = lang['bannerLinkText']
-    this.acceptBtnText = lang['acceptBtnText']
-    this.rejectBtnText = lang['rejectBtnText']
     this.manageText = lang['manageText']
   }
 
@@ -296,16 +271,12 @@ class LanguagesGC {
         'bannerHeading': 'Ons gebruik koekies',
         'bannerDescription': 'Ons gebruik ons eie koekies en die van derdepartye, om inhoud te verpersoonlik en om webverkeer te ontleed.',
         'bannerLinkText': 'Lees meer oor koekies',
-        'acceptBtnText': 'Aanvaar koekies',
-        'rejectBtnText': 'Weier',
         'manageText': 'Koekie-instellings'
       },
       en: {
         'bannerHeading': 'We use cookies',
         'bannerDescription': 'We use our own and third-party cookies to personalize content and to analyze web traffic.',
         'bannerLinkText': 'Read more about cookies',
-        'acceptBtnText': 'Accept cookies',
-        'rejectBtnText': 'Reject',
         'manageText': 'Manage cookies'
       }
     }

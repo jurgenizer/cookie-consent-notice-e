@@ -26,7 +26,7 @@
   font-family: inherit;
   position: fixed;
   width: auto;
-  max-width: 425px;
+  max-width: 375px;
   z-index: 999;
   -webkit-box-shadow: 0 .625em 1.875em rgba(2,2,3,.2);
   -moz-box-shadow: 0 .625em 1.875em rgba(2,2,3,.2);
@@ -34,56 +34,23 @@
   transition: transform .2s ease, opacity .2s ease !important;
 }
 
-.cookieConsentNotice__banner .accept__btn__styles {
-  border: none;
-  padding: 13px 15px;
-  font-size: 15px;
-  font-family: inherit;
-  width: 49%;
+
+/* Close Button for Modal */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #4a4a4a;
+  text-decoration: none;
   cursor: pointer;
-  font-weight: bolder;
-  transition: filter 0.15s;
-  user-select: none;
 }
 
-.cookieConsentNotice__banner .settings__btn__styles {
-  border: none;
-  padding: 13px 15px;
-  font-family: inherit;
-  font-size: 15px;
-  width: 49%;
-  cursor: pointer;
-  font-weight: bolder;
-  transition: filter 0.15s;
-  user-select: none;
-}
 
-.cookieConsentNotice__banner .btn__section button:focus {
-  outline: none;
-  transform: scale(0.95);
-  /*-webkit-filter: contrast(75%);
-  filter: contrast(75%);*/
-  -webkit-filter: brightness(78%);
-  filter: brightness(78%);
-}
-
-.cookieConsentNotice__banner .btn__section button:hover {
- /* -webkit-filter: contrast(85%);
-  filter: contrast(85%);*/
-  -webkit-filter: brightness(88%);
-  filter: brightness(88%);
-}
-
-@media (max-width: 455px) {
-  .btn__section .btn__accept {
-    width: 100%;
-    margin-bottom: 7px;
-  }
-
-  .btn__section .btn__settings {
-      width: 100%;
-  }
-}
 
 /* BASIC BANNER STYLE */
 /* ========================= */
@@ -114,18 +81,6 @@
   opacity: 0.8;
 }
 
-.cookieConsentNotice__banner__basic .btn__section {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.cookieConsentNotice__banner__basic .btn__section button {
-  border-radius: 5px;
-}
-
 @media (max-width: 455px) {
   .cookieConsentNotice__banner__basic {
       bottom: 0px;
@@ -136,12 +91,6 @@
       max-width: 550px;
   }
 
-  .cookieConsentNotice__banner__basic .btn__section {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      margin-top: 20px;
-  }
 }
 
 
@@ -190,4 +139,3 @@
 .prebanner:hover {
   text-decoration: none;
 }
-
